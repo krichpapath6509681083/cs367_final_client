@@ -61,41 +61,41 @@ public class BakeboxClientApplication {
             );
             tc03Response.getBody().forEach(System.out::println);
 
-            // // Test Case 04
-            // System.out.println("\n=== [TC04] Create a new box with full item list (valid) ===");
-            // Box newBox = new Box("Japanese Snack Box", 59, List.of(
-            //         new Item("Tokyo Banana", 85, 4),
-            //         new Item("Matcha Pocky", 45, 6),
-            //         new Item("Yuzu Citrus Candy", 50, 5),
-            //         new Item("Shiroi Koibito Cookies", 90, 3),
-            //         new Item("Ume Plum Rice Crackers", 65, 4)
-            // ));
+            // Test Case 04
+            System.out.println("\n=== [TC04] Create a new box with full item list (valid) ===");
+            Box newBox = new Box("Japanese Snack Box", 59, List.of(
+                    new Item("Tokyo Banana", 85, 4),
+                    new Item("Matcha Pocky", 45, 6),
+                    new Item("Yuzu Citrus Candy", 50, 5),
+                    new Item("Shiroi Koibito Cookies", 90, 3),
+                    new Item("Ume Plum Rice Crackers", 65, 4)
+            ));
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-            // HttpEntity<Box> tc04Request = new HttpEntity<>(newBox, headers);
-            // ResponseEntity<Box> tc04Response = restTemplate.postForEntity(BASE_URL + "/boxes", tc04Request, Box.class);
-            // System.out.println(tc04Response.getBody());
+            HttpEntity<Box> tc04Request = new HttpEntity<>(newBox, headers);
+            ResponseEntity<Box> tc04Response = restTemplate.postForEntity(BASE_URL + "/boxes", tc04Request, Box.class);
+            System.out.println(tc04Response.getBody());
 
-            // // Test Case 05
-            // System.out.println("\n=== [TC05] Create a box with empty item list ===");
-            // Box emptyBox = new Box("Empty Box", 10, List.of());
-            // HttpEntity<Box> tc05Request = new HttpEntity<>(emptyBox, headers);
-            // try {
-            //     ResponseEntity<Box> tc05Response = restTemplate.postForEntity(BASE_URL + "/boxes", tc05Request, Box.class);
-            //     System.out.println(tc05Response.getBody());
-            // } catch (Exception e) {
-            //     System.out.println("Error: " + e.getMessage());
-            // }
+            // Test Case 05
+            System.out.println("\n=== [TC05] Create a box with empty item list ===");
+            Box emptyBox = new Box("Empty Box", 10, List.of());
+            HttpEntity<Box> tc05Request = new HttpEntity<>(emptyBox, headers);
+            try {
+                ResponseEntity<Box> tc05Response = restTemplate.postForEntity(BASE_URL + "/boxes", tc05Request, Box.class);
+                System.out.println(tc05Response.getBody());
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
 
-            // // Test Case 06
-            // System.out.println("\n=== [TC06] Create a box with missing fields (invalid payload) ===");
-            // HttpEntity<Map<String, Object>> tc06Request = new HttpEntity<>(Map.of("boxName", "Invalid Box"), headers);
-            // try {
-            //     ResponseEntity<String> tc06Response = restTemplate.postForEntity(BASE_URL + "/boxes", tc06Request, String.class);
-            //     System.out.println(tc06Response.getBody());
-            // } catch (Exception e) {
-            //     System.out.println("Error: " + e.getMessage());
-            // }
+            // Test Case 06
+            System.out.println("\n=== [TC06] Create a box with missing fields (invalid payload) ===");
+            HttpEntity<Map<String, Object>> tc06Request = new HttpEntity<>(Map.of("boxName", "Invalid Box"), headers);
+            try {
+                ResponseEntity<String> tc06Response = restTemplate.postForEntity(BASE_URL + "/boxes", tc06Request, String.class);
+                System.out.println(tc06Response.getBody());
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
 
             // Test Case 15
             System.out.println("\n=== [TC15] Update and delete items with valid actions ===");
